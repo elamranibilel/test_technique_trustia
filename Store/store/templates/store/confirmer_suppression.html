@@ -1,0 +1,10 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Supprimer "{{ produit.nom }}" ?</h1>
+<p class="text-danger">Cette action est irréversible.</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmer</button>
+    <a href="/produits/" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Créer une facture</h1>
+<form method="post" class="mt-3">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr><th>Produit</th><th>Prix</th><th>Quantité</th></tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+            <tr>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.prix }} €</td>
+                <td><input type="number" class="form-control" name="quantite_{{ produit.id }}" value="0" min="0" placeholder="0"></td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="3">Aucun produit disponible.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-dark">Créer la facture</button>
+    <a href="/factures/" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Facture #{{ facture.id }}</h1>
+<p class="text-muted">Date : {{ facture.date_creation|date:"d/m/Y H:i" }}</p>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr><th>Produit</th><th>Prix unitaire</th><th>Quantité</th><th>Sous-total</th></tr>
+    </thead>
+    <tbody>
+        {% for ligne in facture.lignes.all %}
+        <tr>
+            <td>{{ ligne.produit.nom }}</td>
+            <td>{{ ligne.produit.prix }} €</td>
+            <td>{{ ligne.quantite }}</td>
+            <td>{{ ligne.sous_total }} €</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p><strong>Nombre total de produits : {{ facture.nb_produits }}</strong></p>
+<p><strong>Total à payer : {{ facture.total }} €</strong></p>
+<a href="/factures/" class="btn btn-secondary mt-2">← Retour aux factures</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Factures</h1>
+    <a class="btn btn-dark" href="/factures/creer/">+ Nouvelle facture</a>
+</div>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>N°</th><th>Date</th><th>Total</th><th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for facture in page_obj %}
+        <tr>
+            <td>{{ facture.id }}</td>
+            <td>{{ facture.date_creation|date:"d/m/Y H:i" }}</td>
+            <td>{{ facture.total }} €</td>
+            <td><a class="btn btn-sm btn-dark" href="/factures/{{ facture.pk }}/">Voir</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Aucune facture.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">←</a></li>
+        {% endif %}
+        <li class="page-item disabled"><a class="page-link">Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</a></li>
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">→</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}

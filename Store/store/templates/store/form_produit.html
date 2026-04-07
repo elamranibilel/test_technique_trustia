@@ -1,0 +1,18 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>{% if form.instance.pk %}Modifier{% else %}Créer{% endif %} un produit</h1>
+<form method="post" class="mt-3" style="max-width: 500px;">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="mb-3">
+        <label class="form-label">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+        <div class="text-danger">{{ field.errors }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-dark">Enregistrer</button>
+    <a href="/produits/" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}
