@@ -2,7 +2,11 @@
 
 ## Exercice 1
 
-Programme Python qui affiche des blocs de texte encadrés dans la console.
+Programme Python qui affiche dans la console des blocs de texte encadrés.
+
+- Données stockées dans un seul dictionnaire structuré
+- Activation/désactivation d'une phrase via un booléen `visible`
+- Largeur des blocs facilement modifiable via `WIDTH`
 
 ```bash
 python exercice1.py
@@ -10,7 +14,19 @@ python exercice1.py
 
 ## Exercice 2
 
-Application web Django de gestion de produits et de factures.
+Programme Python qui affiche un menu de restaurant dans la console.
+
+- Menu organisé par catégories (Entrées, Plats, Desserts)
+- Chaque plat possède un nom, un prix et une disponibilité
+- Les plats indisponibles sont masqués avec un booléen `visible`
+
+```bash
+python exercice2.py
+```
+
+## Application Django (dossier `Store/`)
+
+Application web de gestion de produits et de factures réalisée avec Django.
 
 ### Installation
 
@@ -32,8 +48,8 @@ Ouvrir `http://127.0.0.1:8000` dans le navigateur.
 - Consulter le détail d'une facture (total, nombre de produits)
 - Pagination sur les listes
 
-### Stack
+## Stack
 
-- Python / Django
-- SQLite
+- Python 3
+- Django / SQLite
 - Bootstrap 5
